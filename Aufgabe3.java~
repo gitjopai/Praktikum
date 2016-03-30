@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.stream.*;
+class AsciiPlotter {
+	public static final int Breite = 15;
+	public static final int Höhe = 15;
+	private final char[][] grid = new char[Höhe][Breite];
+	public AsciiPlotter(){
+		Stream.of(grid).forEach(line -> Arrays.fill(line, 		'.'));
+	}
+	public static void main(String[] args){
+		final AsciiPlotter asciiPlotter = new   		AsciiPlotter();
+		AsciiPlotter.elementatrer(0,0,10,3);
+		System.out.println(AsciiPlotter);
+	}
+	public static void elementatrer(int Startx, int Starty, int 			Endex, int Endey){
+		double Streckex = Endex - Startx;
+		double Streckey = Endey - Starty;
+		double Steigung = Streckey / Streckex;
+		int Ywert = Starty;
+		double Abweichung = 0.0;
+		for(int Xwert = Startx; Xwert <= Endex; Xwert++){
+			Abweichung = Abweichung + Steigung;
+			Plotte(Xwert,Ywert);
+			if(Abweichung>0.5){
+				Ywert = Ywert + 1;
+				Abweichung = Abweichung -1;
+			}
+		}
+}}
